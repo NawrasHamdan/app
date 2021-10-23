@@ -1,0 +1,35 @@
+version: "3.1"
+
+services:
+  app:
+    image: nawrasprogressoft/api-project:latest
+    restart: always
+    enviroment:
+      - URI=mongodb://admin_user:56035fd19aad482489b@mongo:27017/apiDb
+      - ACCKEY=73d57385b67783bbd3ef8bc22867d8ba22bcf7f258ca8a3ea487071d7544b492
+      - REFKEY=de28e1c8c64c719e276591d998312de37e68d6644a4ed473c1b047f5275c3582
+      - PORT=3000
+      - REDIS=redis
+    ports:
+      - 3000:3000
+  redis:
+    image: redis
+    ports: 6379:6379
+  mongo:
+    image: mongo
+    restart: always
+    ports:
+      - 27017:27017
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin_user
+      MONGO_INITDB_ROOT_PASSWORD: 56035fd19aad482489b
+
+  mongo-express:
+    image: mongo-express
+    restart: always
+    ports:
+      - 8081:8081
+    environment:
+      ME_CONFIG_MONGODB_ADMINUSERNAME: admin_user
+      ME_CONFIG_MONGODB_ADMINPASSWORD: 56035fd19aad482489b
+      ME_CONFIG_MONGODB_URL: mongodb://admin_user:56035fd19aad482489b@mongo:27017/apiDb

@@ -15,6 +15,4 @@ services:
     ports:
       - 27017:27017
     environment:
-      MONGO_INITDB_ROOT_USERNAME: admin_user
-      MONGO_INITDB_ROOT_PASSWORD: 56035fd19aad482489b
-      MONGO_INITDB_DATABASE: apiDb
+      MONGO_INITDB_DATABASE: "apiDb"

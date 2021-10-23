@@ -1,20 +1,14 @@
 version: "3.1"
-
 services:
   app:
-    image: nawrasprogressoft/api-project:latest
+    image: nawrasprogressoft/api-project:1.0
     restart: always
-    enviroment:
-      - URI: mongodb://admin_user:56035fd19aad482489b@mongo:27017/apiDb
-      - ACCKEY: 73d57385b67783bbd3ef8bc22867d8ba22bcf7f258ca8a3ea487071d7544b492
-      - REFKEY: de28e1c8c64c719e276591d998312de37e68d6644a4ed473c1b047f5275c3582
-      - PORT: 3000
-      - REDIS: redis
     ports:
       - 3000:3000
   redis:
     image: redis
-    ports: 6379:6379
+    ports:
+      - 6379:6379
   mongo:
     image: mongo
     restart: always
